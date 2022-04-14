@@ -1,4 +1,4 @@
-﻿   /* cs152-miniL phase1 */
+   /* cs152-miniL phase1 */
    
 %{   
    /* write your C code here for definitions of variables and including headers */
@@ -17,13 +17,13 @@ INVALID_END [a-zA-Z][a-zA-Z0-9]*[_]
 
 
 function {printf("FUNCTION\n"); currPos += yyleng;}
-beginparams {printf("BEGIN_PARAMS\n"); currPos += yyleng;}
-endparams {printf("END_PARAMS\n"); currPos += yyleng;}
-beginlocals {printf("BEGIN_LOCALS\n"); currPos += yyleng;}
-endlocals {printf("END_LOCALS\n"); currPos += yyleng;}
-beginbody {printf("BEGIN_BODY\n"); currPos += yyleng;}
-endbody {printf("END_BODY\n"); currPos += yyleng;}
-integer {printf("INTERGER\n"); currPos += yyleng;}
+beginparams {printf("BEGINPARAMS\n"); currPos += yyleng;}
+endparams {printf("ENDPARAMS\n"); currPos += yyleng;}
+beginlocals {printf("BEGINLOCALS\n"); currPos += yyleng;}
+endlocals {printf("ENDLOCALS\n"); currPos += yyleng;}
+beginbody {printf("BEGINBODY\n"); currPos += yyleng;}
+endbody {printf("ENDBODY\n"); currPos += yyleng;}
+integer {printf("INTEGER\n"); currPos += yyleng;}
 array {printf("ARRAY\n"); currPos += yyleng;}
 enum {printf("ENUM\n"); currPos += yyleng;}
 of {printf("OF\n"); currPos += yyleng;}
