@@ -17,12 +17,12 @@ INVALID_END [a-zA-Z][a-zA-Z0-9]*[_]
 
 
 function {printf("FUNCTION\n"); currPos += yyleng;}
-beginparams {printf("BEGINPARAMS\n"); currPos += yyleng;}
-endparams {printf("ENDPARAMS\n"); currPos += yyleng;}
-beginlocals {printf("BEGINLOCALS\n"); currPos += yyleng;}
-endlocals {printf("ENDLOCALS\n"); currPos += yyleng;}
-beginbody {printf("BEGINBODY\n"); currPos += yyleng;}
-endbody {printf("ENDBODY\n"); currPos += yyleng;}
+beginparams {printf("BEGIN_PARAMS\n"); currPos += yyleng;}
+endparams {printf("END_PARAMS\n"); currPos += yyleng;}
+beginlocals {printf("BEGIN_LOCALS\n"); currPos += yyleng;}
+endlocals {printf("END_LOCALS\n"); currPos += yyleng;}
+beginbody {printf("BEGIN_BODY\n"); currPos += yyleng;}
+endbody {printf("END_BODY\n"); currPos += yyleng;}
 integer {printf("INTEGER\n"); currPos += yyleng;}
 array {printf("ARRAY\n"); currPos += yyleng;}
 enum {printf("ENUM\n"); currPos += yyleng;}
@@ -65,8 +65,8 @@ return {printf("RETURN\n"); currPos += yyleng;}
 "," {printf("COMMA\n"); currPos += yyleng;}
 "("	{printf("L_PARENTHESIS\n"); currPos += yyleng;}
 ")"	{printf("R_PARENTHESIS\n"); currPos += yyleng;}
-"["   {printf("R_BRACKET\n"); currPos += yyleng;}
-"]"   {printf("L_BRACKET\n"); currPos += yyleng;}
+"["   {printf("L_SQUARE_BRACKET\n"); currPos += yyleng;}
+"]"   {printf("R_SQUARE_BRACKET\n"); currPos += yyleng;}
 ":="   {printf("ASSIGN\n"); currPos += yyleng;}
 
 
@@ -76,6 +76,8 @@ return {printf("RETURN\n"); currPos += yyleng;}
 {IDENTIFIER} {printf("IDENT  %s\n", yytext); currPos += yyleng;}
 {INVALID_START} {printf("Error at line %d, column %d: identifier \"%s\"\n must begin with a letter ", currLine, currPos, yytext); exit(0);}
 {INVALID_END} {printf("Error at line %d, column %d: identifier \"%s\"\n cannot end with an underscore", currLine, currPos, yytext); exit(0);}
+
+{COMMENT} {currPos += yyleng;}
 
 [ \t] {/* ignore spaces */ currPos += yyleng;}
 
